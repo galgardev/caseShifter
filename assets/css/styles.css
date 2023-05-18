@@ -73,4 +73,20 @@ h1 {
   background-color: #f0f0f0;
   border: none;
   resize: none;
+}
+
+.copy-button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }/*# sourceMappingURL=styles.css.map */

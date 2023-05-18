@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
         caseSelector: document.getElementById('case-selector'),
         convertButton: document.getElementById('convert-button'),
         resultTextarea: document.getElementById('result-textarea'),
-        preserveAccentsCheckbox: document.getElementById('preserve-accents')
+        preserveAccentsCheckbox: document.getElementById('preserve-accents'),
+        copyButton: document.getElementById('copy-button')
     };
 
     function convertCase() {
@@ -56,7 +57,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         elements.resultTextarea.value = convertedText;
+        updateCopyButton();
+    }
+
+    function updateCopyButton() {
+        const hasContent = elements.resultTextarea.value.trim().length > 0;
+        elements.copyButton.disabled = !hasContent;
+    }
+
+    function copyToClipboard() {
+        elements.resultTextarea.select();
+        document.execCommand('copy');
     }
 
     elements.convertButton.addEventListener('click', convertCase);
+    elements.resultTextarea.addEventListener('input', updateCopyButton);
+    elements.copyButton.addEventListener('click', copyToClipboard);
 });
