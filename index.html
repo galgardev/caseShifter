@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Effortlessly transform the case of your texts">
+    <title>caseShifter | Effortlessly transform the case of your texts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>caseShifter</h1>
+    </header>
+
+    <main>
+        <section class="container">
+            <h2 class="section-title">Effortlessly transform the case of your texts</h2>
+
+            <form id="case-shifter-form" class="case-shifter-form">
+                <div>
+                    <label for="text-input" class="label">Text:</label>
+                    <textarea id="text-input" class="case-shifter-textarea" placeholder="Enter the text..."></textarea>
+                </div>
+
+                <div>
+                    <label for="case-selector" class="label">Case Type:</label>
+                    <select id="case-selector" class="case-shifter-select">
+                        <option value="flatcase">flatcase</option>
+                        <option value="kebab-case">kebab-case</option>
+                        <option value="camelCase">camelCase</option>
+                        <option value="PascalCase">PascalCase</option>
+                        <option value="snake_case">snake_case</option>
+                        <option value="CONSTANT_CASE">CONSTANT_CASE</option>
+                        <option value="COBOL-CASE">COBOL-CASE</option>
+                        <option value="Title Case">Title Case</option>
+                        <option value="Sentence case">Sentence case</option>
+                        <option value="Train-Case">Train-Case</option>
+                    </select>
+                </div>
+
+                <div>
+                    <button type="button" id="convert-button" class="case-shifter-button">Convert</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="container result-container">
+            <h2 class="section-title">Result</h2>
+
+            <div>
+                <label for="result-textarea" class="result-label">Converted Text:</label>
+                <textarea id="result-textarea" class="result-textarea" readonly></textarea>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 caseShifter. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
