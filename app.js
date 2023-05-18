@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const caseSelector = document.getElementById('case-selector');
     const convertButton = document.getElementById('convert-button');
     const resultTextarea = document.getElementById('result-textarea');
+    const preserveAccentsCheckbox = document.getElementById('preserve-accents');
 
     // Función de conversión de caso
     function convertCase() {
@@ -12,15 +13,18 @@ document.addEventListener('DOMContentLoaded', function () {
         // Limpiar las palabras de símbolos de puntuación
         const cleanText = text.replace(/[^\w\sáéíóúñç]/gi, '');
 
+        // Obtener el estado del checkbox de conservar acentos
+        const preserveAccents = preserveAccentsCheckbox.checked;
+
         // Reemplazar letras con acentos y caracteres especiales
         const normalizedText = cleanText
-            .replace(/[àáâãäåā]/gi, 'a')
-            .replace(/[èéêëē]/gi, 'e')
-            .replace(/[ìíîïī]/gi, 'i')
-            .replace(/[òóôõöøō]/gi, 'o')
-            .replace(/[ùúûüū]/gi, 'u')
-            .replace(/[ñń]/gi, 'n')
-            .replace(/[çćč]/gi, 'c');
+            .replace(/[àáâãäåā]/gi, preserveAccents ? '$&' : 'a')
+            .replace(/[èéêëē]/gi, preserveAccents ? '$&' : 'e')
+            .replace(/[ìíîïī]/gi, preserveAccents ? '$&' : 'i')
+            .replace(/[òóôõöøō]/gi, preserveAccents ? '$&' : 'o')
+            .replace(/[ùúûüū]/gi, preserveAccents ? '$&' : 'u')
+            .replace(/[ñń]/gi, preserveAccents ? '$&' : 'n')
+            .replace(/[çćč]/gi, preserveAccents ? '$&' : 'c');
 
         // Obtener las palabras resultantes
         const words = normalizedText.split(/\s+/);
