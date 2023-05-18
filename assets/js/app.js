@@ -12,52 +12,47 @@ document.addEventListener('DOMContentLoaded', function () {
         const text = elements.textInput.value;
         const cleanText = text.replace(/[^\w\sáéíóúñç]/gi, '');
         const preserveAccents = elements.preserveAccentsCheckbox.checked;
-        const normalizedText = cleanText.replace(/[àáâãäåāèéêëēìíîïīòóôõöøōùúûüūñńçćč]/gi, preserveAccents ? '$&' : function (match) {
-            return match.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        });
+        const normalizedText = normalizeText(cleanText, preserveAccents);
         const words = normalizedText.split(/\s+/);
         const selectedCase = elements.caseSelector.value;
 
-        let convertedText = '';
-
-        switch (selectedCase) {
-            case 'flatcase':
-                convertedText = words.join('').toLowerCase();
-                break;
-            case 'kebab-case':
-                convertedText = words.join('-').toLowerCase();
-                break;
-            case 'camelCase':
-                convertedText = words.map((word, index) => index === 0 ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
-                break;
-            case 'PascalCase':
-                convertedText = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
-                break;
-            case 'snake_case':
-                convertedText = words.join('_').toLowerCase();
-                break;
-            case 'CONSTANT_CASE':
-                convertedText = words.join('_').toUpperCase();
-                break;
-            case 'COBOL-CASE':
-                convertedText = words.join('-').toUpperCase();
-                break;
-            case 'Title Case':
-                convertedText = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
-                break;
-            case 'Sentence case':
-                convertedText = words.map((word, index) => index === 0 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word.toLowerCase()).join(' ');
-                break;
-            case 'Train-Case':
-                convertedText = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('-');
-                break;
-            default:
-                convertedText = text;
-                break;
-        }
+        const convertedText = convertText(words, selectedCase);
 
         elements.resultTextarea.value = convertedText;
         updateCopyButton();
+    }
+
+    function normalizeText(text, preserveAccents) {
+        return text.replace(/[àáâãäåāèéêëēìíîïīòóôõöøōùúûüūñńçćč]/gi, preserveAccents ? '$&' : function (match) {
+            return match.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        });
+    }
+
+    function convertText(words, selectedCase) {
+        switch (selectedCase) {
+            case 'flatcase':
+                return words.join('').toLowerCase();
+            case 'kebab-case':
+                return words.join('-').toLowerCase();
+            case 'camelCase':
+                return words.map((word, index) => index === 0 ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+            case 'PascalCase':
+                return words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+            case 'snake_case':
+                return words.join('_').toLowerCase();
+            case 'CONSTANT_CASE':
+                return words.join('_').toUpperCase();
+            case 'COBOL-CASE':
+                return words.join('-').toUpperCase();
+            case 'Title Case':
+                return words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+            case 'Sentence case':
+                return words.map((word, index) => index === 0 ? word.charAt(0).toUpperCase() + word.slice(1).toLowerCase() : word.toLowerCase()).join(' ');
+            case 'Train-Case':
+                return words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('-');
+            default:
+                return elements.textInput.value;
+        }
     }
 
     function updateCopyButton() {
