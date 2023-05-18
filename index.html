@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Effortlessly transform the case of your texts">
     <title>caseShifter | Effortlessly transform the case of your texts</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles-min.css">
 </head>
 
 <body>
@@ -45,7 +45,6 @@
                         <input type="checkbox" id="preserve-accents">
                         Preserve Accents
                     </label>
-
                 </div>
 
                 <div>
@@ -61,6 +60,10 @@
                 <label for="result-textarea" class="result-label">Converted Text:</label>
                 <textarea id="result-textarea" class="result-textarea" readonly></textarea>
             </div>
+
+            <div>
+                <button type="button" id="copy-button" class="copy-button" disabled>Copy to Clipboard</button>
+            </div>
         </section>
     </main>
 
@@ -68,7 +71,7 @@
         <p>&copy; 2023 caseShifter. All rights reserved.</p>
     </footer>
 
-    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/app-min.js"></script>
 </body>
 
 </html>
