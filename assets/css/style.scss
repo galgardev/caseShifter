@@ -74,6 +74,14 @@ article img {
     user-select: none;
 }
 
+#hero {
+
+    h1,
+    h6 {
+        text-align: left;
+    }
+}
+
 @media (max-width: 768px) {
     .medium-space {
         display: none;
@@ -95,6 +103,7 @@ article img {
 
             h1,
             h6 {
+                word-break: break-all;
                 margin: .5rem !important;
             }
         }

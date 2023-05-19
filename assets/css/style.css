@@ -75,6 +75,11 @@ article img {
           user-select: none;
 }
 
+#hero h1,
+#hero h6 {
+  text-align: left;
+}
+
 @media (max-width: 768px) {
   .medium-space {
     display: none;
@@ -93,6 +98,7 @@ article img {
   }
   #hero .absolute h1,
   #hero .absolute h6 {
+    word-break: break-all;
     margin: 0.5rem !important;
   }
 }/*# sourceMappingURL=style.css.map */
