@@ -11,22 +11,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function convertCase() {
         const text = elements.textInput.value;
-        const cleanText = text.replace(/[^\w\sáéíóúñç]/gi, '');
-        const preserveAccents = elements.preserveAccentsCheckbox.checked;
-        const normalizedText = normalizeText(cleanText, preserveAccents);
-        const words = normalizedText.split(/\s+/);
+        const cleanText = normalizeText(text);
+        const words = cleanText.split(/\s+/);
         const selectedCase = elements.caseSelector.value;
-
         const convertedText = convertText(words, selectedCase);
 
         elements.resultTextarea.value = convertedText;
+        elements.resultTextarea.focus();
         updateCopyButton();
     }
 
-    function normalizeText(text, preserveAccents) {
-        return text.replace(/[àáâãäåāèéêëēìíîïīòóôõöøōùúûüūñńçćč]/gi, preserveAccents ? '$&' : function (match) {
-            return match.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        });
+    function normalizeText(text) {
+        const specialCharsRegex = /[çñø]/gi; // Expresión regular para detectar caracteres especiales "ç", "ñ" y "ø"
+        const removedCharsRegex = /[^a-z0-9\s-_/*.àáâãäåāèéêëēìíîïīòóôõöōùúûü]/gi; // Expresión regular para detectar caracteres que no son letras, números, espacios, guiones, guiones bajos, barras, asteriscos, puntos o caracteres acentuados
+        let normalizedText = text;
+
+        function removeAccents() {
+            if (!elements.preserveAccentsCheckbox.checked) {
+                // Normaliza el texto utilizando el formulario NFD
+                normalizedText = normalizedText.normalize('NFD');
+
+                // Filtra los caracteres diacríticos y los elimina
+                normalizedText = normalizedText.replace(/[\u0300-\u036f]/g, '');
+            }
+        }
+
+        function specialChars() {
+            normalizedText = normalizedText.replace(specialCharsRegex, function (match) {
+                if (match === 'ç') {
+                    return 'c';
+                } else if (match === 'ñ') {
+                    return 'n';
+                } else if (match === 'ø') {
+                    return 'o';
+                }
+            });
+        }
+
+        function removedChars() {
+            normalizedText = normalizedText.replace(removedCharsRegex, '');
+        }
+
+        removeAccents();
+
+        specialChars();
+
+        removedChars();
+
+        return normalizedText;
     }
 
     function convertText(words, selectedCase) {
@@ -62,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function copyToClipboard() {
-        elements.resultTextarea.select();
-        document.execCommand('copy');
+        const textToCopy = elements.resultTextarea.value;
+        navigator.clipboard.writeText(textToCopy);
     }
 
     function clearTextInput() {
