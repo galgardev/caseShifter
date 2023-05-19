@@ -73,3 +73,30 @@ body.light {
 article img {
     user-select: none;
 }
+
+@media (max-width: 768px) {
+    .medium-space {
+        display: none;
+    }
+
+    #hero {
+        height: 15rem;
+
+        .absolute {
+            padding: .5rem !important;
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h6 {
+                font-size: 1rem;
+            }
+
+            h1,
+            h6 {
+                margin: .5rem !important;
+            }
+        }
+    }
+}

@@ -73,4 +73,26 @@ article img {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+@media (max-width: 768px) {
+  .medium-space {
+    display: none;
+  }
+  #hero {
+    height: 15rem;
+  }
+  #hero .absolute {
+    padding: 0.5rem !important;
+  }
+  #hero .absolute h1 {
+    font-size: 2.5rem;
+  }
+  #hero .absolute h6 {
+    font-size: 1rem;
+  }
+  #hero .absolute h1,
+  #hero .absolute h6 {
+    margin: 0.5rem !important;
+  }
 }/*# sourceMappingURL=style.css.map */
