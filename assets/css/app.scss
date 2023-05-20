@@ -4,13 +4,12 @@
 $font-code: "Roboto Mono", "Courier New", Courier, monospace;
 
 .field.extra.textarea {
-    height: 8rem;
+    height: 13.5rem;
 }
 
 #text-input,
 #result-textarea {
     font-family: $font-code;
-    padding-right: 8.5rem;
 }
 
 #case-selector {
@@ -33,6 +32,10 @@ $font-code: "Roboto Mono", "Courier New", Courier, monospace;
 
 #paste-button,
 #copy-button {
+    z-index: 9999;
+    background-color: var(--background);
+    color: var(--primary);
+
     i {
         display: none;
     }
@@ -41,6 +44,10 @@ $font-code: "Roboto Mono", "Courier New", Courier, monospace;
 @media (max-width: 768px) {
     .medium-space {
         display: none;
+    }
+
+    .field.extra.textarea {
+        height: 12rem;
     }
 
     #hero {

@@ -1,5 +1,7 @@
+let elements;
+
 function onDOMLoaded() {
-    const elements = {
+    elements = {
         textInput: document.getElementById('text-input'),
         caseSelector: document.getElementById('case-selector'),
         convertButton: document.getElementById('convert-button'),
@@ -10,17 +12,18 @@ function onDOMLoaded() {
         clearButton: document.getElementById('clear-button')
     };
 
+    elements.textInput.setAttribute('maxlength', 256);
+
     function convertCase() {
-        const text = elements.textInput.value;
-        const cleanText = normalizeText(text);
-        const words = cleanText.split(/\s+/);
-        const selectedCase = elements.caseSelector.value;
-        const convertedText = convertText(words, selectedCase);
+        let text = elements.textInput.value;
+        let cleanText = normalizeText(text);
+        let words = cleanText.split(/\s+/);
+        let selectedCase = elements.caseSelector.value;
+        let convertedText = convertText(words, selectedCase);
 
         elements.resultTextarea.value = convertedText;
         elements.resultTextarea.focus();
 
-        elements.copyButton.classList.remove('border');
         elements.copyButton.querySelector('i').style.display = 'none';
         elements.copyButton.querySelector('span').textContent = 'Copy';
 
@@ -28,8 +31,8 @@ function onDOMLoaded() {
     }
 
     function normalizeText(text) {
-        const specialCharsRegex = /[çñø]/gi;
-        const removedCharsRegex = /[^a-z0-9\s-_/*.àáâãäåāèéêëēìíîïīòóôõöōùúûü]/gi;
+        let specialCharsRegex = /[çñø]/gi;
+        let removedCharsRegex = /[^a-z0-9\s-_/*.àáâãäåāèéêëēìíîïīòóôõöōùúûü]/gi;
         let normalizedText = text.trim();
 
         function removeAccents() {
@@ -100,7 +103,7 @@ function onDOMLoaded() {
     }
 
     function updateCopyButton() {
-        const hasContent = elements.resultTextarea.value.trim().length > 0;
+        let hasContent = elements.resultTextarea.value.trim().length > 0;
         elements.copyButton.disabled = !hasContent;
     }
 
@@ -108,13 +111,15 @@ function onDOMLoaded() {
         navigator.clipboard.readText()
             .then(
                 function handleClipboardText(clipboardText) {
-                    elements.textInput.value = clipboardText;
+                    let trimmedText = clipboardText.trim().slice(0, 256);
+                    elements.textInput.value = trimmedText;
                     modifyPasteButton('Pasted!');
                     elements.pasteButton.blur();
                     setTimeout(updateConvertButtons, 10);
                     setTimeout(updateConvertButtons, 100);
                     setTimeout(updateConvertButtons, 300);
                     setTimeout(revertPasteButtonChanges, 1500);
+
                 })
             .catch(
                 function handleClipboardError(error) {
@@ -123,19 +128,17 @@ function onDOMLoaded() {
     }
 
     function modifyPasteButton(text) {
-        elements.pasteButton.classList.add('border');
         elements.pasteButton.querySelector('i').style.display = 'inline-flex';
         elements.pasteButton.querySelector('span').textContent = text;
     }
 
     function revertPasteButtonChanges() {
-        elements.pasteButton.classList.remove('border');
         elements.pasteButton.querySelector('i').style.display = 'none';
         elements.pasteButton.querySelector('span').textContent = 'Paste';
     }
 
     function copyToClipboard() {
-        const textToCopy = elements.resultTextarea.value;
+        let textToCopy = elements.resultTextarea.value;
         navigator.clipboard.writeText(textToCopy);
         modifyCopyButton('Copied!');
         elements.copyButton.blur();
@@ -143,13 +146,11 @@ function onDOMLoaded() {
     }
 
     function modifyCopyButton(text) {
-        elements.copyButton.classList.add('border');
         elements.copyButton.querySelector('i').style.display = 'inline-flex';
         elements.copyButton.querySelector('span').textContent = text;
     }
 
     function revertCopyButtonChanges() {
-        elements.copyButton.classList.remove('border');
         elements.copyButton.querySelector('i').style.display = 'none';
         elements.copyButton.querySelector('span').textContent = 'Copy';
     }
@@ -158,13 +159,12 @@ function onDOMLoaded() {
         elements.textInput.value = '';
         updateConvertButtons();
 
-        elements.pasteButton.classList.remove('border');
         elements.pasteButton.querySelector('i').style.display = 'none';
         elements.pasteButton.querySelector('span').textContent = 'Paste';
     }
 
     function updateConvertButtons() {
-        const inputValue = elements.textInput.value.trim();
+        let inputValue = elements.textInput.value.trim();
         elements.convertButton.disabled = inputValue.length === 0;
         elements.clearButton.disabled = inputValue.length === 0;
     }
