@@ -1,28 +1,41 @@
-// Specific App styles
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+/* Specific App styles */
+@import "https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap";
+
+$font-code: "Roboto Mono", "Courier New", Courier, monospace;
+
+.field.extra.textarea {
+    height: 8rem;
+}
 
 #text-input,
-#result-textarea,
+#result-textarea {
+    font-family: $font-code;
+    padding-right: 8.5rem;
+}
+
 #case-selector {
-    font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+    font-family: $font-code;
 }
 
 #hero {
-
+    -webkit-user-select: none;
+    -moz-user-select: none;
     user-select: none;
 
-    h1,
+    h1 {
+        text-align: left;
+    }
+
     h6 {
         text-align: left;
     }
 }
 
-#result-textarea {
-    padding-right: 8.5rem;
-}
-
-#copy-button i {
-    display: none;
+#paste-button,
+#copy-button {
+    i {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -34,20 +47,18 @@
         height: 15rem;
 
         .absolute {
-            padding: .5rem !important;
+            padding: 0.5rem !important;
 
             h1 {
                 font-size: 2.5rem;
+                word-break: break-word;
+                margin: 0.5rem !important;
             }
 
             h6 {
                 font-size: 1rem;
-            }
-
-            h1,
-            h6 {
                 word-break: break-word;
-                margin: .5rem !important;
+                margin: 0.5rem !important;
             }
         }
     }

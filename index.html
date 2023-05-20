@@ -17,8 +17,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/img/favicon-16x16.png">
     <link rel="manifest" href="./assets/img/site.webmanifest">
     <link rel="stylesheet" href="./assets/css/beer.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/app.css">
+    <link rel="stylesheet" href="./assets/css/styles.min.css">
+    <link rel="stylesheet" href="./assets/css/app.min.css">
 </head>
 
 <body>
@@ -55,6 +55,16 @@
                     <h6>Pre-processed Text</h6>
                     <div class="field textarea label border extra">
                         <textarea id="text-input" placeholder="To get started, enter your text here"></textarea>
+                        <div class="page right active">
+                            <div class="padding absolute right bottom">
+                                <nav>
+                                    <button type="button" id="paste-button" class="responsive round large">
+                                        <i class="small">assignment_turned_in</i>
+                                        <span>Paste</span>
+                                    </button>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="grid">
@@ -118,10 +128,9 @@
                         <div class="page right active">
                             <div class="padding absolute right bottom">
                                 <nav>
-                                    <button type="button" id="copy-button" disabled
-                                        class="responsive round large border">
+                                    <button type="button" id="copy-button" disabled class="responsive round large">
                                         <i class="small">assignment_turned_in</i>
-                                        <span>Copy text</span>
+                                        <span>Copy</span>
                                     </button>
                                 </nav>
                             </div>
@@ -133,12 +142,12 @@
     </main>
 
     <footer class="medium-padding">
-        <p class="center-align">&copy; 2023 caseShifter. All rights reserved. | Developed by <a
+        <p class="center-align">&copy; 2023 caseShifter. All rights reserved. | Licensed under MIT | Developed by <a
                 href="https://galgar.dev" target="_blank" rel="nofollow">galgar.dev</a></p>
     </footer>
     <script type="module" src="./assets/js/beer.min.js" defer></script>
-    <script src="./assets/js/main.js" defer></script>
-    <script src="./assets/js/app.js" defer></script>
+    <script src="./assets/js/main.min.js" defer></script>
+    <script src="./assets/js/app.min.js" defer></script>
 </body>
 
 </html>
