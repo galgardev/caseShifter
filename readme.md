@@ -51,6 +51,8 @@ This project is licensed under the MIT License.
 
 This application was developed by [galgar.dev](https://galgar.dev).
 
+Visit the [caseShifter website](https://caseshifter.galgar.dev) for more information.
+
 ---
 
 ## :es: Descripción del proyecto en castellano
@@ -90,3 +92,5 @@ Este proyecto está licenciado bajo la Licencia MIT.
 ### :bust_in_silhouette: Desarrollador
 
 Esta aplicación fue desarrollada por [galgar.dev](https://galgar.dev).
+
+Visita la [página web de caseShifter](https://caseshifter.galgar.dev) para obtener más información.
