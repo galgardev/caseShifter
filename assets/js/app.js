@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         elements.resultTextarea.value = convertedText;
         elements.resultTextarea.focus();
+        elements.copyButton.classList.add('border');
+        elements.copyButton.querySelector('i').style.display = 'none';
+        elements.copyButton.querySelector('span').textContent = 'Copy text';
         updateCopyButton();
     }
 
@@ -96,14 +99,24 @@ document.addEventListener('DOMContentLoaded', function () {
     function copyToClipboard() {
         const textToCopy = elements.resultTextarea.value;
         navigator.clipboard.writeText(textToCopy);
+        elements.copyButton.classList.remove('border');
+        elements.copyButton.querySelector('i').style.display = 'inline-flex';
+        elements.copyButton.querySelector('span').textContent = 'Copied!';
     }
 
     function clearTextInput() {
         elements.textInput.value = '';
     }
 
+    function updateConvertButtons() {
+        const inputValue = elements.textInput.value.trim();
+        elements.convertButton.disabled = inputValue.length === 0;
+        elements.clearButton.disabled = inputValue.length === 0;
+    }
+
     elements.convertButton.addEventListener('click', convertCase);
     elements.resultTextarea.addEventListener('input', updateCopyButton);
     elements.copyButton.addEventListener('click', copyToClipboard);
     elements.clearButton.addEventListener('click', clearTextInput);
+    elements.textInput.addEventListener('input', updateConvertButtons);
 });

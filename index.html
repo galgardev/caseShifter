@@ -42,7 +42,8 @@
         <div class="grid">
             <div class="s12 medium-padding">
                 <article id="hero" class="no-elevate round no-padding medium">
-                    <img class="responsive" src="./assets/img/bg.jpeg" alt="Background Contemporary Art">
+                    <img class="responsive" src="./assets/img/bg.jpeg" alt="Background Contemporary Art"
+                        draggable="false">
                     <div class="absolute middle center-align white-text large-padding">
                         <h1 class="large large-margin">caseShifter</h1>
                         <h6 class="large-margin">Effortlessly transform the case of your texts.</h6>
@@ -51,71 +52,90 @@
             </div>
             <div class="s12 m12 l6">
                 <div class="medium-padding">
-                    <div class="field textarea label border no-margin">
-                        <textarea id="text-input"></textarea>
-                        <label for="text-input">Input</label>
+                    <h6>Pre-processed Text</h6>
+                    <div class="field textarea label border extra">
+                        <textarea id="text-input" placeholder="To get started, enter your text here"></textarea>
                     </div>
 
-                    <nav class="wrap">
-                        <label class="checkbox" for="preserve-accents">
-                            <input type="checkbox" class="form-check-input" id="preserve-accents"><span>Preserve
-                                Accents</span>
-                        </label>
-                    </nav>
-                    <div class="small-space"></div>
-                    <div class="field label suffix border">
-                        <select id="case-selector" class="form-select case-shifter-select">
-                            <option value="flatcase">flatcase</option>
-                            <option value="kebab-case">kebab-case</option>
-                            <option value="camelCase">camelCase</option>
-                            <option value="PascalCase">PascalCase</option>
-                            <option value="snake_case">snake_case</option>
-                            <option value="CONSTANT_CASE">CONSTANT_CASE</option>
-                            <option value="COBOL-CASE">COBOL-CASE</option>
-                            <option value="Title Case">Title Case</option>
-                            <option value="Sentence case">Sentence case</option>
-                            <option value="Train-Case">Train-Case</option>
-                        </select>
-                        <label class="active">Case Type</label>
-                        <i>arrow_drop_down</i>
+                    <div class="grid">
+                        <div class="s12 m12 l12">
+                            <div class="field label suffix border">
+                                <select id="case-selector" class="form-select case-shifter-select">
+                                    <option value="flatcase">flatcase</option>
+                                    <option value="kebab-case">kebab-case</option>
+                                    <option value="camelCase">camelCase</option>
+                                    <option value="PascalCase">PascalCase</option>
+                                    <option value="snake_case">snake_case</option>
+                                    <option value="CONSTANT_CASE">CONSTANT_CASE</option>
+                                    <option value="COBOL-CASE">COBOL-CASE</option>
+                                    <option value="Title Case">Title Case</option>
+                                    <option value="Sentence case">Sentence case</option>
+                                    <option value="Train-Case">Train-Case</option>
+                                </select>
+                                <label class="active">Case Type</label>
+                                <i>arrow_drop_down</i>
+                            </div>
+                        </div>
+                        <div class="s12 m12 l12">
+                            <div class="field middle-align">
+                                <nav class="no-padding">
+                                    <div class="max">
+                                        <h6>Accents</h6>
+                                        <p>Turn on the switch to preserve accents</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" class="form-check-input" id="preserve-accents">
+                                        <span></span>
+                                    </label>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
 
-
-                    <nav class="wrap">
-                        <button type="button" id="convert-button">
-                            <i class="small">check</i>
-                            <span>Convert</span>
-                        </button>
-                        <button type="button" id="clear-button" class="border">
-                            <i class="small">close</i>
-                            <span>Clear</span>
-                        </button>
-                    </nav>
+                    <div class="grid">
+                        <div class="s12 m6">
+                            <nav>
+                                <button type="button" id="convert-button" class="responsive large" disabled>
+                                    <span>Convert</span>
+                                </button>
+                            </nav>
+                        </div>
+                        <div class="s12 m6">
+                            <nav>
+                                <button type="button" id="clear-button" class="responsive border round large" disabled>
+                                    <span>Clear</span>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="s12 l6">
                 <div class="medium-padding">
-                    <div class="field textarea label border">
-                        <textarea id="result-textarea" readonly></textarea>
-                        <label for="result-textarea">Result</label>
+                    <h6>Processed Text</h6>
+                    <div class="field textarea label border extra">
+                        <textarea id="result-textarea" readonly placeholder="The result will appear here"></textarea>
+                        <div class="page right active">
+                            <div class="padding absolute right bottom">
+                                <nav>
+                                    <button type="button" id="copy-button" disabled
+                                        class="responsive round large border">
+                                        <i class="small">assignment_turned_in</i>
+                                        <span>Copy text</span>
+                                    </button>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
-                    <nav class="wrap no-space">
-                        <button type="button" id="copy-button" disabled>
-                            <i class="small">assignment_turned_in</i>
-                            <span>Copy to Clipboard</span></button>
-                    </nav>
                 </div>
             </div>
         </div>
-
-        <div class="large-space"></div>
-
     </main>
 
-    <div>
+    <footer class="medium-padding">
         <p class="center-align">&copy; 2023 caseShifter. All rights reserved. | Developed by <a
                 href="https://galgar.dev" target="_blank" rel="nofollow">galgar.dev</a></p>
-    </div>
+    </footer>
     <script type="module" src="./assets/js/beer.min.js" defer></script>
     <script src="./assets/js/main.js" defer></script>
     <script src="./assets/js/app.js" defer></script>
