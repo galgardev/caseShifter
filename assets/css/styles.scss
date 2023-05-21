@@ -58,6 +58,23 @@ body.dark {
     --inverse-primary: #305da8;
 }
 
+// Headers font
+@font-face {
+    font-family: Google Sans;
+    font-style: normal;
+    font-weight: 400;
+    src: local('Google Sans'), url('../font/googlegansregular.woff') format('woff')
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Google Sans', sans-serif;
+}
+
 // Scrollbar
 * {
     scrollbar-width: thin;
