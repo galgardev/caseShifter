@@ -113,7 +113,7 @@ function onDOMLoaded() {
                 function handleClipboardText(clipboardText) {
                     let trimmedText = clipboardText.trim().slice(0, 256);
                     elements.textInput.value = trimmedText;
-                    modifyPasteButton('Pasted!');
+                    modifyPasteButton('¡Pegado!');
                     elements.pasteButton.blur();
                     setTimeout(updateConvertButtons, 10);
                     setTimeout(updateConvertButtons, 100);
@@ -134,13 +134,13 @@ function onDOMLoaded() {
 
     function revertPasteButtonChanges() {
         elements.pasteButton.querySelector('i').style.display = 'none';
-        elements.pasteButton.querySelector('span').textContent = 'Paste';
+        elements.pasteButton.querySelector('span').textContent = 'Pegar';
     }
 
     function copyToClipboard() {
         let textToCopy = elements.resultTextarea.value;
         navigator.clipboard.writeText(textToCopy);
-        modifyCopyButton('Copied!');
+        modifyCopyButton('¡Copiado!');
         elements.copyButton.blur();
         setTimeout(revertCopyButtonChanges, 1500);
     }
@@ -152,7 +152,7 @@ function onDOMLoaded() {
 
     function revertCopyButtonChanges() {
         elements.copyButton.querySelector('i').style.display = 'none';
-        elements.copyButton.querySelector('span').textContent = 'Copy';
+        elements.copyButton.querySelector('span').textContent = 'Copiar';
     }
 
     function clearTextInput() {
@@ -160,7 +160,7 @@ function onDOMLoaded() {
         updateConvertButtons();
 
         elements.pasteButton.querySelector('i').style.display = 'none';
-        elements.pasteButton.querySelector('span').textContent = 'Paste';
+        elements.pasteButton.querySelector('span').textContent = 'Pegar';
     }
 
     function updateConvertButtons() {
